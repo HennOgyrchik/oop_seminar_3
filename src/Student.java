@@ -1,14 +1,9 @@
-public class Student implements Comparable<Student>{
-    private String firstname;
-    private String lastname;
-    private int id;
+public class Student extends User implements Comparable<Student>, Printable<Student>{
+
     private int meanBall;
 
-
     public  Student (String firstname, String lastname, int id, int meanBall){
-        this.firstname=firstname;
-        this.lastname=lastname;
-        this.id = id;
+        super(firstname,lastname,id);
         this.meanBall=meanBall;
     }
 
@@ -20,42 +15,14 @@ public class Student implements Comparable<Student>{
         this.meanBall = meanBall;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", id=" + id +
-                ", meanBall=" + meanBall +
-                '}';
-    }
 
     @Override
     public int compareTo(Student o) {
         return (int)(this.getMeanBall()-o.getMeanBall());
+    }
+
+    @Override
+    public void print() {
+        System.out.println(super.toString()+" mean ball= "+meanBall);
     }
 }
